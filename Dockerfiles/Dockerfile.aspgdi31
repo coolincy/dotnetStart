@@ -1,0 +1,13 @@
+FROM asp31
+MAINTAINER Coolincy coolincy@qq.com
+
+# 添加 gdi
+RUN apt install libfontconfig1 libgdiplus -y
+RUN ln -s libgdiplus.so gdiplus.dll
+RUN ln -s /lib/x86_64-linux-gnu/libdl-2.24.so /lib/x86_64-linux-gnu/libdl.so
+
+# arm64 架构将上面一句改成下面两句
+#RUN ln -s /lib/aarch64-linux-gnu/ld-2.28.so /lib/aarch64-linux-gnu/ld.so
+#RUN ln -s /lib/aarch64-linux-gnu/ld-2.28.so /lib/aarch64-linux-gnu/libdl.so
+
+#docker build -t aspgdi31 . -f Dockerfile.aspgdi31
